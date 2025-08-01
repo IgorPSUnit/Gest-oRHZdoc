@@ -38,6 +38,11 @@ namespace GestãoRHZdoc.Data
             context.Funcionario.Remove(funcionario);
             context.SaveChanges();
         }
+
+        public IEnumerable<Funcionario> BuscarPorCargo(string cargo)
+        {
+            return ListarPor(f => f.Cargo == cargo);
+        }
     }
 
 
