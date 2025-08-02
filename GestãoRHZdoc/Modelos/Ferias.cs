@@ -9,7 +9,7 @@ namespace GestãoRHZdoc.Modelos
     {
         public int IdFerias { get; set; }
         public int IdFuncionario { get; set; }
-        public Funcionario Funcionario { get; set; }
+        public virtual Funcionario Funcionario { get; set; } = null!;
         public DateTime? DataInicio { get; private set; }
         public DateTime? DataTermino { get; private set; }
 

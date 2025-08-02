@@ -11,14 +11,14 @@ namespace GestãoRHZdoc.Modelos
         private List<Ferias> ferias = new List<Ferias>();
 
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Cargo { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Cargo { get; set; } = string.Empty;
         public DateTime DataDeAdmissao { get; set; }
         public decimal Salario { get; set; }
         public Boolean Status { get; set; }
         public Funcionario() { }
 
-        public List<Ferias> Ferias { get => ferias; set => ferias = value; }
+        public virtual List<Ferias> Ferias { get => ferias; set => ferias = value; }
 
         public Funcionario(int id, string nome, string cargo, DateTime dataAdmissao, decimal salario)
         {

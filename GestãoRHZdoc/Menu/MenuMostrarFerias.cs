@@ -15,7 +15,7 @@ namespace GestãoRHZdoc.Menu
             base.Executar(funcionarioDAL);
             ExibirTituloDaOpcao("Exibindo todas as férias registradas na nossa aplicação");
 
-            foreach (var funcionario in funcionariosRegistrados.Values)
+            foreach (var funcionario in GlobalData.FuncionariosRegistrados.Values)
             {
                 if (funcionario.Ferias != null && funcionario.Ferias.Any())
                 {

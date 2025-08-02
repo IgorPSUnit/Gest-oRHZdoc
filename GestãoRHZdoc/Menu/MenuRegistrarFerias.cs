@@ -15,14 +15,14 @@ namespace GestãoRHZdoc.Menu
             base.Executar(funcionarioDAL);
             ExibirTituloDaOpcao("Registro de Férias");
             Console.Write("Digite o nome do funcionário que deseja registrar férias: ");
-            string nomeDoFuncionario = Console.ReadLine()!;
-            if (funcionariosRegistrados.TryGetValue(nomeDoFuncionario, out Funcionario funcionario))
+            string nomeDoFuncionario = Console.ReadLine() ?? string.Empty;
+            if (GlobalData.FuncionariosRegistrados.TryGetValue(nomeDoFuncionario, out Funcionario? funcionario) && funcionario != null)
             {
                 Console.WriteLine($"Digite a data de início das férias de {nomeDoFuncionario} (formato: dd/MM/yyyy): ");
-                string entradaDataInicio = Console.ReadLine()!;
+                string entradaDataInicio = Console.ReadLine() ?? string.Empty;
                 DateTime dataInicioFerias = DateTime.ParseExact(entradaDataInicio, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 Console.WriteLine($"Digite a data de término das férias de {nomeDoFuncionario} (formato: dd/MM/yyyy): ");
-                string entradaDataFim = Console.ReadLine()!;
+                string entradaDataFim = Console.ReadLine() ?? string.Empty;
                 DateTime dataFimFerias = DateTime.ParseExact(entradaDataFim, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 // Registrar as férias no funcionário
 

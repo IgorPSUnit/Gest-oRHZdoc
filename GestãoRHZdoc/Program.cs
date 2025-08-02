@@ -2,6 +2,8 @@
 using GestãoRHZdoc.Menu;
 using GestãoRHZdoc.Modelos;
 
+
+
 try
 {
     var context = new GestaoRHContext();
@@ -23,40 +25,38 @@ try
     }
     
 
+    Dictionary<int, Menu> opcoes = new();
+    opcoes.Add(1, new MenuRegistrarFuncionario());
+    opcoes.Add(2, new MenuMostrarFuncionarios());
+
+    opcoes.Add(-1, new MenuSair());
+    
+    void ExibirMenuPrincipal()
+    {
+        Console.Clear();
+        Console.WriteLine("Bem-vindo ao Sistema de Gestão de Recursos Humanos!");
+        Console.WriteLine("1. Cadastrar Funcionário");
+        Console.WriteLine("2. Mostrar Funcionários");
+        Console.WriteLine("-1. Sair");
+
+        Console.Write("\nEscolha uma opção: ");
+        string opcao = Console.ReadLine()!;
+        int opcaoEscolhida = int.Parse(opcao);
+        if (opcoes.ContainsKey(opcaoEscolhida))
+        {
+            Menu menuExibido = opcoes[opcaoEscolhida];
+            menuExibido.Executar(funcionarioDal);
+            if (opcaoEscolhida > 0) ExibirMenuPrincipal();
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida, tente novamente.");
+        }
+    }
+
+    //ExibirMenuPrincipal();
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
-return;
-
-Dictionary<string, Funcionario> funcionariosRegistradas = new();
-
-Dictionary<int, Menu> opcoes = new();
-opcoes.Add(1, new MenuMostrarFuncionarios());
-
-opcoes.Add(-1, new MenuSair());
-void ExibirMenuPrincipal()
-{
-    Console.Clear();
-    Console.WriteLine("Bem-vindo ao Sistema de Gestão de Recursos Humanos!");
-    Console.WriteLine("1. Cadastrar Funcionário");
-    Console.WriteLine("2. Mostrar Funcionários");
-    Console.WriteLine("-1. Sair");
-
-    Console.Write("\nEscolha uma opção: ");
-    string opcao = Console.ReadLine()!;
-    int opcaoEscolhida = int.Parse(opcao);
-    if (opcoes.ContainsKey(opcaoEscolhida))
-    {
-        Menu menuExibido = opcoes[opcaoEscolhida];
-        menuExibido.Executar(funcionarioDAL);
-        if (opcaoEscolhida > 0) ExibirMenuPrincipal();
-    }
-    else
-    {
-        Console.WriteLine("Opção inválida, tente novamente.");
-    }
-}
-
-//ExibirMenuPrincipal();

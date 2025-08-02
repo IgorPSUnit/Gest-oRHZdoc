@@ -41,7 +41,7 @@ namespace GestãoRHZdoc.Data
 
         public IEnumerable<Funcionario> BuscarPorCargo(string cargo)
         {
-            return ListarPor(f => f.Cargo == cargo);
+            return context.Funcionario.Where(f => f.Cargo == cargo).ToList();
         }
     }
 
